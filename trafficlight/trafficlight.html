@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Traffic Light</title>
+<style>
+  .traffic-light {
+    width: 100px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+  }
+  .light {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ccc;
+  }
+  #red:checked ~ .traffic-light #red {
+    background-color: red;
+  }
+  #yellow:checked ~ .traffic-light #yellow {
+    background-color: yellow;
+  }
+  #green:checked ~ .traffic-light #green {
+    background-color: green;
+  }
+  input[type="radio"] {
+    display: none;
+  }
+  label {
+    cursor: pointer;
+  }
+  /* Style circular buttons */
+  button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: #ccc;
+    margin: 10px;
+    cursor: pointer;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+<input type="radio" name="light" id="red">
+<input type="radio" name="light" id="yellow">
+<input type="radio" name="light" id="green">
+
+<div class="traffic-light">
+  <div id="red" class="light"></div>
+  <div id="yellow" class="light"></div>
+  <div id="green" class="light"></div>
+</div>
+
+<label for="red"><button id="redButton" onclick="setRed()">Red</button></label>
+<label for="yellow"><button id="yellowButton" onclick="setYellow()">Yellow</button></label>
+<label for="green"><button id="greenButton" onclick="setGreen()">Green</button></label>
+<label for="allLights"><button id="allLightsButton" onclick="setAllLights()">All Lights</button></label>
+<label for="altLights"><button id="altLightsButton" onclick="disableAllLights()">Alt</button></label>
+
+<script>
+  function setRed() {
+    document.getElementById('red').checked = true;
+    document.getElementById('yellow').checked = false;
+    document.getElementById('green').checked = false;
+  }
+  function setYellow() {
+    document.getElementById('red').checked = false;
+    document.getElementById('yellow').checked = true;
+    document.getElementById('green').checked = false;
+  }
+  function setGreen() {
+    document.getElementById('red').checked = false;
+    document.getElementById('yellow').checked = false;
+    document.getElementById('green').checked = true;
+  }
+  function setAllLights() {
+    document.getElementById('red').checked = true;
+    document.getElementById('yellow').checked = true;
+    document.getElementById('green').checked = true;
+  }
+  function disableAllLights() {
+    document.getElementById('red').checked = false;
+    document.getElementById('yellow').checked = false;
+    document.getElementById('green').checked = false;
+  }
+</script>
+
+</body>
+</html>
+
